@@ -21,7 +21,7 @@ function App() {
   return (
     <ul>
       {data?.lessons.map(lesson => { // O ? indica para ele olhar para a lesson, se o data estiver vazio
-        return <li>{lesson.title}</li>
+        return <li key={lesson.id}>{lesson.title}</li> // key: Quando percorre uma lista usando a propriedade map, precisa da key para identificar o elemento unicamente
       })}
     </ul>
   )

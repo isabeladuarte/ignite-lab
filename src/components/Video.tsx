@@ -2,7 +2,27 @@ import { DefaultUi, Player, Youtube } from "@vime/react";
 import { CaretRight, DiscordLogo, FileArrowDown, Lightning } from "phosphor-react";
 
 import '@vime/core/themes/default.css'
-export function Video() {
+
+const GET_LESSON_BY_SLUG_QUERY = gql `
+    query GetLessonBySlug ($slug: String){
+        lesson(where: {slug: $slug}) {
+            title
+            videoId
+            description
+            teacher {
+                name
+                bio
+                avatarURL
+            }
+    }
+}
+
+`
+
+interface VideoProps {
+    lessonSlug: string;
+}
+export function Video(props: VideoProps) {
     return (
         <div className="flex-1">
             <div className="bg-black flex justify-center">
